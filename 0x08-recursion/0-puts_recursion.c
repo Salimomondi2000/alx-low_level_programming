@@ -1,17 +1,27 @@
 #include "main.h"
+
 /**
- * _puts_recursion -  function that prints a string, followed by a new line
- * @s: This is a pointer to a string //zakaria elaroussi
- * Return: nothing
+ * _puts_recursion - function declaration
+ * @s: the string
+ */
+
+void _puts_recursion(char *s);
+
+/**
+ * _puts_recursion - function definition
+ * @s: thr string to recurse
+ * Description: recurses through a string s
+ * Return: void
  */
 
 void _puts_recursion(char *s)
 {
-if (*s == '\0')
-{
-_putchar('\n');
-return;
-}
-_putchar(*s);
-_puts_recursion(s + 1);
-}
+	if (*s)
+	{
+		_putchar(*s);
+		_puts_recursion(++s);
+	}
+	else
+	{
+		_putchar('\n');
+	}
