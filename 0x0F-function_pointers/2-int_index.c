@@ -1,32 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "function_pointers.h"
-
 /**
- * int_index - function that looks on value
- * and returns its index
- * @arr: pointer to the array elements
+ * int_index - indexes array
+ * @array: array to go through
  * @size: size of array
- * @cmp: function pounter  to check index in array
- * if true return index  else -1 or 1
+ * @cmp: function to do something with size
+ * Return: int value
  */
-
-
-int int_index(int *arr, int size, int (*cmp)(int))
+int int_index(int *array, int size, int (*cmp)(int))
 {
-	int i;
+	int index;
 
-	if (size <= 0)
+	if (size <= 0 || array == NULL || cmp == NULL)
 		return (-1);
-
-	if (arr == NULL || cmp == NULL)
-		return (-1);
-
-	for (i = 0; i < size; i++)
+	for (index = 0; index < size; index++)
 	{
-		if (cmp(arr[i]) != 0)
-		{
-			return (i);
-		}
+		if (cmp(array[index]))
+			return (index);
 	}
 	return (-1);
 }
